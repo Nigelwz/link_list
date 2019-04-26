@@ -1,16 +1,12 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-
 typedef struct _NODE{
 	int data;
 	struct _NODE* next;
 }NODE;
 
-
 NODE* head = NULL;
-
-
 NODE* current;
 
 void insert(int x)
@@ -25,11 +21,9 @@ void insert(int x)
 	/*if(head)
 		tmp -> next = head;
 	head = tmp;*/
-	if(head == NULL)
-		head = tmp;
-	else
-		current ->next = tmp;
-	current = tmp;
+	if(head)
+		tmp -> next = head;
+	head = tmp;
 }
 
 void print(void)
@@ -48,6 +42,7 @@ void main(void)
 	insert(3);
 	insert(4);
 	insert(5);
+	//head = current;
 	print();
 	printf("hello");
 }
