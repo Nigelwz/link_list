@@ -30,17 +30,22 @@ void delete(int n)
 {
 	NODE* tmp1 = head;
 	NODE* tmp2;
-	if(head->size < n)
+	if(head->size < n ||  head->size == 1)
 	{
 		printf("head size %d is bigger than n\n",head ->size);
+		printf("head size is not valid\n");
 		return;
 	}
-	else if(head->size == 1)
+	//else if(head->size == 1)
+	//{
+	//	printf("head size %d is smaller than n\n",head->size);
+	//	return;
+	//}
+	if(n == 0)
 	{
-		printf("head size %d is smaller than n\n",head->size);
+		printf("n size can't be set zero");
 		return;
 	}
-	
 	if(n == 1){
 		head = tmp1->next;
 		head -> size = tmp1->size;
@@ -57,6 +62,22 @@ void delete(int n)
 
 	head ->size--;
 }
+
+void reverse(void)
+{
+	NODE* cur,*prev,*next;
+	cur = head;
+	prev = NULL;
+	while(cur != NULL)
+	{
+		next = cur -> next;
+		cur -> next = prev;
+		prev = cur;
+		cur = next;
+	}
+	head = prev;
+}
+
 
 
 void print(void)
@@ -77,6 +98,14 @@ void main(void)
 	insert(3);
 	insert(4);
 	insert(5);
+	printf("link list is =\n");
+	print();
+	printf("\n");
+	reverse();
+	printf("reverse link list is =\n");
+	print();
+	reverse();
+	printf("reverse link list is =\n");
 	print();
 	while(1)
 	{
